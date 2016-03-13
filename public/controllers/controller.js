@@ -1,12 +1,13 @@
 var myApp = angular
     .module('myApp', [])
     .controller('AppCtrl', ['$http', function($http) {
+        console.log('Hello form controller');
         var vm = this;
-
         vm.title = 'This is a test';
 
         var refresh = function () {
             $http.get('/contactlist').success(function (response) {
+                console.log('I got the data I requested');
                 vm.contactlist = response;
                 vm.contact = "";
             });

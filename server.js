@@ -1,11 +1,14 @@
 // Import dependencies
 var bodyParser = require('body-parser');
+
 var express = require('express');
-var mongoose = require('mongoose');
+var mongojs = require('mongojs');
+var db = mongojs('contactlist', ['contactlist']);
+
 var path = require('path');
 
 // Connect to mongodb
-var db = mongoose.connect('mongodb://localhost/contactlist');
+mongoose.connect('mongodb://localhost/contactlist');
 
 // Setup app & view
 var app = express();
