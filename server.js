@@ -1,10 +1,10 @@
-// Import deps.
+// Import dependencies
 var bodyParser = require('body-parser');
 var express = require('express');
 var mongoose = require('mongoose');
 var path = require('path');
 
-// Connect to mongoDB
+// Connect to mongodb
 var db = mongoose.connect('mongodb://localhost/contactlist');
 
 // Setup app & view
