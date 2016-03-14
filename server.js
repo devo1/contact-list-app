@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var mongojs = require('mongojs');
 var db = mongojs('contactlist', ['contactlist']);
+var mongoose = require('mongoose');
 var path = require('path');
 
 // Connect to mongodb
