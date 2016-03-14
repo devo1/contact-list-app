@@ -1,49 +1,48 @@
-var myApp = angular
-    .module('myApp', [])
-    .controller('AppCtrl', ['$http', function($http) {
-        console.log('Hello form controller');
-        var vm = this;
-        vm.title = 'This is a test';
+var myApp = angular.module('myApp', []);
+myApp.controller('AppCtrl', ['$scope', '$http', function ($scope, $http) {
+    console.log("Hello World from controller");
 
-        var refresh = function () {
-            $http.get('/contactlist').success(function (response) {
-                console.log('I got the data I requested');
-                vm.contactlist = response;
-                vm.contact = "";
-            });
-        };
-        refresh();
+    var refresh = function () {
+        $http.get('/contactlist').success(function (response) {
+            console.log("I got the data I requested");
+            $scope.contactlist = response;
+            $scope.contact = "";
+        });
+    };
 
-        vm.addContact = function () {
-            console.log(vm.contact);
-            $http.post('/contactlist', vm.contact).success(function (response) {
-                console.log(response);
-                refresh();
-            });
-        };
+    refresh();
 
-        vm.remove = function (id) {
-            console.log(id);
-            $http.delete('/contactlist/' + id).success(function (response) {
-                refresh();
-            });
-        };
+    $scope.addContact = function () {
+        console.log($scope.contact);
+        $http.post('/contactlist', $scope.contact).success(function (response) {
+            console.log(response);
+            refresh();
+        });
+    };
 
-        vm.edit = function (id) {
-            console.log(id);
-            $http.get('/contactlist/' + id).success(function (response) {
-                vm.contact = response;
-            });
-        };
+    $scope.remove = function (id) {
+        console.log(id);
+        $http.delete('/contactlist/' + id).success(function (response) {
+            refresh();
+        });
+    };
 
-        vm.update = function () {
-            console.log(vm.contact._id);
-            $http.put('/contactlist/' + vm.contact._id, vm.contact).success(function (response) {
-                refresh();
-            })
-        };
+    $scope.edit = function (id) {
+        console.log(id);
+        $http.get('/contactlist/' + id).success(function (response) {
+            $scope.contact = response;
+        });
+    };
 
-        vm.deselect = function () {
-            vm.contact = "";
-        };
-    }]);
+    $scope.update = function () {
+        console.log($scope.contact._id);
+        $http.put('/contactlist/' + $scope.contact._id, $scope.contact).success(function (response) {
+            refresh();
+        })
+    };
+
+        $scope.deselect = function () {
+            $scope.contact = '';
+        }
+}]);
+

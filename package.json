@@ -1,13 +1,13 @@
 {
   "name": "contact-list-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Live Contact List App Demo",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
-  "author": "",
+  "author": "Eddie Tamakloe",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
