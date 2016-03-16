@@ -1,8 +1,11 @@
 var express = require('express');
 var  app = express();
 var mongojs = require('mongojs');
-var db = mongojs('contactlist', ['contactlist']);
+//var db = mongojs('contactlist', ['contactlist']);
 var bodyParser = require('body-parser');
+
+
+var db = mongojs('mongodb//Admin:Admin123@ds059365.mlab.com:59365/guru99',[contactlist]);
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
