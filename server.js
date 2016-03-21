@@ -4,7 +4,8 @@ var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 
 
-var db = mongojs('mongodb//admin:admin123@ds059365.mlab.com:59365/guru99', [contactlist]);
+var uri = mongojs('mongodb//admin:admin123@ds059365.mlab.com:59365/guru99', [contactlist]);
+db = mongoose.connect(uri);
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
