@@ -2,6 +2,8 @@ var myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function ($scope, $http) {
     console.log('Message from controller');
 
+    $scope.editMode = false;
+
     var refresh = function () {
         $http.get('/contactlist').success(function (response) {
             console.log("I got the data I requested");
@@ -28,13 +30,18 @@ myApp.controller('AppCtrl', ['$scope', '$http', function ($scope, $http) {
     };
 
     $scope.edit = function (id) {
-        console.log(id);
+
+        $scope.editMode = true;
+        console.log('in edit');
+        console.log('_id = ', id);
         $http.get('/contactlist/' + id).success(function (response) {
             $scope.contact = response;
         });
     };
 
     $scope.update = function () {
+
+        $scope.editMode = false;
         console.log($scope.contact._id);
         $http.put('/contactlist/' + $scope.contact._id, $scope.contact).success(function (response) {
             refresh();
