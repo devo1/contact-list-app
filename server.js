@@ -4,7 +4,7 @@ var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 var config = require('./config/config');
 
-var db = mongojs('mongodb://admin:admin123@ds059365.mlab.com:59365/guru99',['contactlist']);
+var db = mongojs('mongodb://admin:admin123@ds059365.mlab.com:59365/guru99', ['contactlist']);
 //var db = contactlist.connection;
 
 app.use(express.static(__dirname + '/public'));
